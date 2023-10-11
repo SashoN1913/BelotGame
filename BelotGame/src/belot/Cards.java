@@ -11,16 +11,8 @@ public class Cards
 	public String getFaceName() {
 		return faceName;
 	}
-
-	public void setFaceName(String faceName) 
-	{
-		List<String> validCard = getValidCards();
-		faceName = faceName.toLowerCase();
-		if(validCard.contains(faceName))
-			this.faceName = faceName;
-	}
-
-	private ArrayList<String> getValidCards() {
+	
+	public ArrayList<String> getValidCards() {
 		ArrayList<String> arr = new ArrayList <String> ();
 		arr.add("2");
 		arr.add("3");
@@ -39,6 +31,18 @@ public class Cards
 		return arr;
 	}
 
+	
+	public void setFaceName(String faceName) 
+	{
+		ArrayList<String> validCard = getValidCards();
+		faceName = faceName.toLowerCase();
+		if(validCard.contains(faceName))
+		{
+			this.faceName = faceName;
+		}
+	}
+
+	
 	public String getSuit() {
 		return suit;
 	}
@@ -49,8 +53,8 @@ public class Cards
 
 	public Cards(String faceName, String suit) {
 		super();
-		this.faceName = faceName;
-		this.suit = suit;
+		setFaceName(faceName);
+		setSuit(suit);
 	}
 	
 	@Override
