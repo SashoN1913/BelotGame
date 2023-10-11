@@ -15,6 +15,14 @@ public class Deck
 	public Deck()
 	{
 		ArrayList<String> suits = Cards.getValidSuits();
-		ArrayList<String> faceName = Cards.getValidCards();
+		ArrayList<String> faceNames = Cards.getValidCards();
+		for(String suit : suits)
+		{
+			for(String faceName: faceNames)
+			{
+				deck.add(new Cards(faceName, suit));
+			}
+		}
+				
 	}
 }
