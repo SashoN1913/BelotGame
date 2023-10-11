@@ -12,13 +12,18 @@ public class Cards
 		return faceName;
 	}
 	
+	public ArrayList<String> getValidSuits()
+	{
+		ArrayList<String> arr = new ArrayList <String> ();
+		arr.add("spades");
+		arr.add("clubs");
+		arr.add("hearts");
+		arr.add("diamonds");
+		return arr;
+	}
+	
 	public ArrayList<String> getValidCards() {
 		ArrayList<String> arr = new ArrayList <String> ();
-		arr.add("2");
-		arr.add("3");
-		arr.add("4");
-		arr.add("5");
-		arr.add("6");
 		arr.add("7");
 		arr.add("8");
 		arr.add("9");
@@ -47,8 +52,12 @@ public class Cards
 		return suit;
 	}
 
-	public void setSuit(String suit) {
-		this.suit = suit;
+	public void setSuit(String suit) 
+	{
+		ArrayList<String> validSuit = getValidSuits();
+		suit = suit.toLowerCase();
+		if(validSuit.contains(suit))
+				this.suit = suit;
 	}
 
 	public Cards(String faceName, String suit) {
