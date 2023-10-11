@@ -12,7 +12,7 @@ public class Cards
 		return faceName;
 	}
 	
-	public ArrayList<String> getValidSuits()
+	public static  ArrayList<String> getValidSuits()
 	{
 		ArrayList<String> arr = new ArrayList <String> ();
 		arr.add("spades");
@@ -22,7 +22,7 @@ public class Cards
 		return arr;
 	}
 	
-	public ArrayList<String> getValidCards() {
+	public static ArrayList<String> getValidCards() {
 		ArrayList<String> arr = new ArrayList <String> ();
 		arr.add("7");
 		arr.add("8");
