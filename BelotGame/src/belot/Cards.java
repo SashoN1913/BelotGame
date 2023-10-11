@@ -15,6 +15,7 @@ public class Cards
 	public void setFaceName(String faceName) 
 	{
 		List<String> validCard = getValidCards();
+		faceName = faceName.toLowerCase();
 		if(validCard.contains(faceName))
 			this.faceName = faceName;
 	}
@@ -52,6 +53,9 @@ public class Cards
 		this.suit = suit;
 	}
 	
-	 
+	@Override
+	public String toString() {
+		return String.format("%s of %s", faceName, suit);
+	}
 	
 }
