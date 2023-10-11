@@ -1,5 +1,6 @@
 package belot;
 
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -7,6 +8,14 @@ import java.util.List;
 public class Cards 
 {
 	private String faceName, suit;
+	private Image img;
+	public Image getImg() {
+		return img;
+	}
+
+	public void setImg(Image img) {
+		this.img = img;
+	}
 
 	public String getFaceName() {
 		return faceName;

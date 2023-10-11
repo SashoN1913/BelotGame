@@ -25,4 +25,12 @@ public class Deck
 		}
 				
 	}
+
+	public ArrayList<Cards> getDeck() {
+		return deck;
+	}
+
+	public void setDeck(ArrayList<Cards> deck) {
+		this.deck = deck;
+	}
 }

@@ -37,7 +37,9 @@ public class gui {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	private Deck deck;
 	private void initialize() {
+		deck = new Deck();
 		frame = new JFrame();
 		frame.setBounds(100, 100, 537, 386);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
