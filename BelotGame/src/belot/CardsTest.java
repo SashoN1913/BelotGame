@@ -1,6 +1,6 @@
 package belot;
 
-public class CardsView 
+public class CardsTest 
 {
 	
 }
