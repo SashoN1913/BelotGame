@@ -15,7 +15,8 @@ public class Cards
 	public void setFaceName(String faceName) 
 	{
 		List<String> validCard = getValidCards();
-		this.faceName = faceName;
+		if(validCard.contains(faceName))
+			this.faceName = faceName;
 	}
 
 	private ArrayList<String> getValidCards() {
