@@ -1,6 +1,9 @@
 package belot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 
 public class Deck 
@@ -46,6 +49,14 @@ public class Deck
 		return name;
 	}
 	
+	public String[] shuffleDeck()
+	{
+		String[] name = new String[32];
+		List<String> strList = Arrays.asList(name);
+		Collections.shuffle(strList);
+		name = strList.toArray(new String[strList.size()]);
+		return name;
+	}
 	
 	public ArrayList<Cards> getDeck() {
 		return deck;
