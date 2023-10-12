@@ -87,6 +87,13 @@ public class gui {
 			public void actionPerformed(ActionEvent e) 
 			{	
 				String [] card = deck.deckWithNames();
+				System.out.println(card[0]);
+				card = deck.shuffleDeck(card);
+				for(int i = 0; i < 5; i++)
+				{
+					System.out.println(card[i]);
+				}
+				System.out.println(card[0]);
 				//System.out.println(card[0]);
 				//Image img = new ImageIcon(this.getClass().getResource("/" + card[0])).getImage();
 				firstCard.setIcon(new ImageIcon(this.getClass().getResource("/" + card[0])));

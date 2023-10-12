@@ -41,20 +41,20 @@ public class Deck
 	
 	public String[] deckWithNames()
 	{
-		String[] name = new String[32];
-		for(int i = 0; i < 32; i++)
+		String[] name = new String[5];
+		for(int i = 0; i < 5; i++)
 		{
 			name[i] = ("c" + (i + 1) + ".png");
 		}		
 		return name;
 	}
 	
-	public String[] shuffleDeck()
+	public String[] shuffleDeck(String[] name)
 	{
-		String[] name = new String[32];
 		List<String> strList = Arrays.asList(name);
 		Collections.shuffle(strList);
 		name = strList.toArray(new String[strList.size()]);
+		System.out.println("test" + name[4]);
 		return name;
 	}
 	
