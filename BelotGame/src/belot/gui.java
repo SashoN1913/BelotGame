@@ -2,10 +2,15 @@ package belot;
 
 import java.awt.EventQueue;
 import java.awt.Image;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JToggleButton;
+import javax.swing.text.html.ImageView;
+import javax.swing.JButton;
+import javax.swing.JToolBar;
 
 public class gui {
 
@@ -38,6 +43,8 @@ public class gui {
 	 * Initialize the contents of the frame.
 	 */
 	private Deck deck;
+	private Cards card;
+	//private ImageView activeImageView;
 	private void initialize() {
 		deck = new Deck();
 		frame = new JFrame();
@@ -48,7 +55,49 @@ public class gui {
 		JLabel lblNewLabel = new JLabel("");
 		Image img = new ImageIcon(this.getClass().getResource("/backOfCardss.jpg")).getImage();
 		lblNewLabel.setIcon(new ImageIcon(img));
-		lblNewLabel.setBounds(10, 11, 467, 297);
+		lblNewLabel.setBounds(-1, 0, 512, 319);
 		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel firstCard = new JLabel("");
+		firstCard.setBounds(101, 216, 72, 120);
+		frame.getContentPane().add(firstCard);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(377, 144, 89, 23);
+		frame.getContentPane().add(btnNewButton);
+		
+		JLabel secondCard = new JLabel("");
+		secondCard.setBounds(195, 216, 78, 120);
+		frame.getContentPane().add(secondCard);
+		
+		JLabel thirdCard = new JLabel("");
+		thirdCard.setBounds(283, 216, 78, 120);
+		frame.getContentPane().add(thirdCard);
+		
+		JLabel fourthCard = new JLabel("");
+		fourthCard.setBounds(387, 216, 78, 120);
+		frame.getContentPane().add(fourthCard);
+		
+		JLabel fifthCard = new JLabel("");
+		fifthCard.setBounds(225, 34, 72, 104);
+		frame.getContentPane().add(fifthCard);
+		btnNewButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{	
+				String [] card = deck.deckWithNames();
+				//System.out.println(card[0]);
+				//Image img = new ImageIcon(this.getClass().getResource("/" + card[0])).getImage();
+				firstCard.setIcon(new ImageIcon(this.getClass().getResource("/" + card[0])));
+				secondCard.setIcon(new ImageIcon(this.getClass().getResource("/" + card[1])));
+				thirdCard.setIcon(new ImageIcon(this.getClass().getResource("/" + card[2])));
+				fourthCard.setIcon(new ImageIcon(this.getClass().getResource("/" + card[3])));
+				fifthCard.setIcon(new ImageIcon(this.getClass().getResource("/" + card[4])));
+			}
+			
+		});
+	
+
 	}
 }
