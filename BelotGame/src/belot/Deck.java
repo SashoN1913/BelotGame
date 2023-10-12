@@ -26,6 +26,27 @@ public class Deck
 				
 	}
 
+	public Cards dealCard()
+	{
+		if(deck.size() > 0)
+		{
+			return deck.remove(0);
+		}
+		else
+			return null;
+	}
+	
+	public String[] deckWithNames()
+	{
+		String[] name = new String[32];
+		for(int i = 0; i < 32; i++)
+		{
+			name[i] = ("c" + (i + 1) + ".png");
+		}		
+		return name;
+	}
+	
+	
 	public ArrayList<Cards> getDeck() {
 		return deck;
 	}

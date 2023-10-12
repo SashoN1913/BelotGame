@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.ImageIcon;
+
 public class Cards 
 {
 	private String faceName, suit;
 	private Image img;
-	public Image getImg() {
+	private Image[] imgArr = new Image[32];
+	public Image getImg(String faceName) {
 		return img;
 	}
 
@@ -70,10 +73,12 @@ public class Cards
 	}
 
 	public Cards(String faceName, String suit) {
-		super();
 		setFaceName(faceName);
 		setSuit(suit);
+		//String fileName = faceName + "_of_" + suit + ".png";
+		//img = new ImageIcon(this.getClass().getResource("./images/" + fileName)).getImage();
 	}
+	
 	
 	@Override
 	public String toString() {
