@@ -55,11 +55,11 @@ public class gui {
 		JLabel lblNewLabel = new JLabel("");
 		Image img = new ImageIcon(this.getClass().getResource("/backOfCardss.jpg")).getImage();
 		lblNewLabel.setIcon(new ImageIcon(img));
-		lblNewLabel.setBounds(-1, 0, 512, 319);
+		lblNewLabel.setBounds(-1, 0, 512, 111);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel firstCard = new JLabel("");
-		firstCard.setBounds(101, 216, 72, 120);
+		firstCard.setBounds(35, 216, 72, 120);
 		frame.getContentPane().add(firstCard);
 		
 		JButton btnNewButton = new JButton("New button");
@@ -67,19 +67,19 @@ public class gui {
 		frame.getContentPane().add(btnNewButton);
 		
 		JLabel secondCard = new JLabel("");
-		secondCard.setBounds(195, 216, 78, 120);
+		secondCard.setBounds(131, 216, 78, 120);
 		frame.getContentPane().add(secondCard);
 		
 		JLabel thirdCard = new JLabel("");
-		thirdCard.setBounds(283, 216, 78, 120);
+		thirdCard.setBounds(235, 216, 78, 120);
 		frame.getContentPane().add(thirdCard);
 		
 		JLabel fourthCard = new JLabel("");
-		fourthCard.setBounds(387, 216, 78, 120);
+		fourthCard.setBounds(333, 216, 78, 120);
 		frame.getContentPane().add(fourthCard);
 		
 		JLabel fifthCard = new JLabel("");
-		fifthCard.setBounds(225, 34, 72, 104);
+		fifthCard.setBounds(421, 216, 78, 120);
 		frame.getContentPane().add(fifthCard);
 		btnNewButton.addActionListener(new ActionListener() {
 

@@ -41,8 +41,8 @@ public class Deck
 	
 	public String[] deckWithNames()
 	{
-		String[] name = new String[5];
-		for(int i = 0; i < 5; i++)
+		String[] name = new String[32];
+		for(int i = 0; i < 32; i++)
 		{
 			name[i] = ("c" + (i + 1) + ".png");
 		}		
