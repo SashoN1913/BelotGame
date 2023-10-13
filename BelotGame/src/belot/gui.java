@@ -11,6 +11,7 @@ import javax.swing.JToggleButton;
 import javax.swing.text.html.ImageView;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
+import java.awt.Choice;
 
 public class gui {
 
@@ -62,9 +63,9 @@ public class gui {
 		firstCard.setBounds(35, 216, 72, 120);
 		frame.getContentPane().add(firstCard);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(377, 144, 89, 23);
-		frame.getContentPane().add(btnNewButton);
+		JButton btnDealCards = new JButton("Раздаване");
+		btnDealCards.setBounds(377, 144, 89, 23);
+		frame.getContentPane().add(btnDealCards);
 		
 		JLabel secondCard = new JLabel("");
 		secondCard.setBounds(131, 216, 78, 120);
@@ -81,7 +82,10 @@ public class gui {
 		JLabel fifthCard = new JLabel("");
 		fifthCard.setBounds(421, 216, 78, 120);
 		frame.getContentPane().add(fifthCard);
-		btnNewButton.addActionListener(new ActionListener() {
+		
+		
+		
+		btnDealCards.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) 
@@ -101,6 +105,15 @@ public class gui {
 				thirdCard.setIcon(new ImageIcon(this.getClass().getResource("/" + card[2])));
 				fourthCard.setIcon(new ImageIcon(this.getClass().getResource("/" + card[3])));
 				fifthCard.setIcon(new ImageIcon(this.getClass().getResource("/" + card[4])));
+				Choice choice = new Choice();
+				choice.setBounds(181, 105, 118, 120);
+				frame.getContentPane().add(choice);
+				choice.add("Пас");
+				choice.add("Спатия");
+				choice.add("Каро");
+				choice.add("Пика");
+				choice.add("Без коз");
+				choice.add("Всичко коз");
 			}
 			
 		});
