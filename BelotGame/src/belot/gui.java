@@ -6,25 +6,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JToggleButton;
-import javax.swing.text.html.ImageView;
 import javax.swing.JButton;
-import javax.swing.JToolBar;
 import java.awt.Choice;
-import java.awt.Label;
-import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
+
 
 public class gui {
 
@@ -57,14 +46,17 @@ public class gui {
 	 * Initialize the contents of the frame.
 	 */
 	
-	private BufferedImage img;
 	private Deck deck;
 	private void initialize() {
-		int currentWidth = 1920;
-		int currentH = 800;
+		final int currentWidth = 1920;
+		final int currentH = 800;
+		
 		Player p1 = new Player();
 		Player p2 = new Player();
+		Player p3 = new Player();
+		Player p4 = new Player();
 		deck = new Deck();
+		
 		frame = new JFrame();
 		frame.setSize(currentWidth, currentH);
 		frame.setVisible(true);
@@ -82,6 +74,18 @@ public class gui {
 		JButton btnDealCards = new JButton("Раздаване");
 		btnDealCards.setBounds(377, 144, 89, 23);
 		frame.getContentPane().add(btnDealCards);
+		
+		Choice choice = new Choice();
+		choice.setBounds(163, 79, 118, 20);
+		frame.getContentPane().add(choice);
+		
+		choice.add("Пас");
+		choice.add("Спатия");
+		choice.add("Каро");
+		choice.add("Купа");
+		choice.add("Пика");
+		choice.add("Без коз");
+		choice.add("Всичко коз");
 		
 		JLabel p1FirsCard = new JLabel("");
 		p1FirsCard.setBounds(p1.cardX(0.20), p1.cardY(0.01125), p1.cardW(0.2), p1.cardH(1.5));
@@ -115,10 +119,6 @@ public class gui {
 		p1EigthCard.setBounds(p1.cardX(0.48), p1.cardY(0.01125), p1.cardW(0.2), p1.cardH(1.5));
 		frame.getContentPane().add(p1EigthCard);
 		
-		Choice choice = new Choice();
-		choice.setBounds(163, 79, 118, 20);
-		frame.getContentPane().add(choice);
-		
 		JLabel p2FirstCard = new JLabel("");
 		p2FirstCard.setBounds(p2.cardX(0.6), p2.cardY(0.28), p2.cardW(0.2), p2.cardH(0.2));
 		frame.getContentPane().add(p2FirstCard);
@@ -150,35 +150,99 @@ public class gui {
 		JLabel p2EigthCard = new JLabel("");
 		p2EigthCard.setBounds(p2.cardX(0.6), p2.cardY(0.00), p2.cardW(0.2), p2.cardH(0.2));
 		frame.getContentPane().add(p2EigthCard);
-		choice.add("Пас");
-		choice.add("Спатия");
-		choice.add("Каро");
-		choice.add("Купа");
-		choice.add("Пика");
-		choice.add("Без коз");
-		choice.add("Всичко коз");
+		
+		JLabel p3FirsCard = new JLabel("");
+		p3FirsCard.setBounds(p3.cardX(0.20), p3.cardY(0.01125), p3.cardW(0.2), p3.cardH(0.3));
+		frame.getContentPane().add(p3FirsCard);
+		
+		JLabel p3SecondCard = new JLabel("");
+		p3SecondCard.setBounds(p3.cardX(0.24), p3.cardY(0.01125), p3.cardW(0.2), p3.cardH(0.3));
+		frame.getContentPane().add(p3SecondCard);
+		
+		JLabel p3ThirdCard = new JLabel("");
+		p3ThirdCard.setBounds(p3.cardX(0.28), p3.cardY(0.01125), p3.cardW(0.2), p3.cardH(0.3));
+		frame.getContentPane().add(p3ThirdCard);
+		
+		JLabel p3FourthCard = new JLabel("");
+		p3FourthCard.setBounds(p3.cardX(0.32), p3.cardY(0.01125), p3.cardW(0.2), p3.cardH(0.3));
+		frame.getContentPane().add(p3FourthCard);
+		
+		JLabel p3FifthCard = new JLabel("");
+		p3FifthCard.setBounds(p3.cardX(0.36), p3.cardY(0.01125), p3.cardW(0.2), p3.cardH(0.3));
+		frame.getContentPane().add(p3FifthCard);
+		
+		JLabel p3SixthCard = new JLabel("");
+		p3SixthCard.setBounds(p3.cardX(0.40), p3.cardY(0.01125), p3.cardW(0.2), p3.cardH(0.3));
+		frame.getContentPane().add(p3SixthCard);
+		
+		JLabel p3SeventhCard = new JLabel("");
+		p3SeventhCard.setBounds(p3.cardX(0.44), p3.cardY(0.01125), p3.cardW(0.2), p3.cardH(0.3));
+		frame.getContentPane().add(p3SeventhCard);
+		
+		JLabel p3EigthCard = new JLabel("");
+		p3EigthCard.setBounds(p3.cardX(0.48), p3.cardY(0.01125), p3.cardW(0.2), p3.cardH(0.3));
+		frame.getContentPane().add(p3EigthCard);
+		
+		JLabel p4FirstCard = new JLabel("");
+		p4FirstCard.setBounds(p2.cardX(0.01), p2.cardY(0.28), p2.cardW(0.2), p2.cardH(0.2));
+		frame.getContentPane().add(p4FirstCard);
+		
+		JLabel p4SecondCard = new JLabel("");
+		p4SecondCard.setBounds(p2.cardX(0.01), p2.cardY(0.24), p2.cardW(0.2), p2.cardH(0.2));
+		frame.getContentPane().add(p4SecondCard);
+		
+		JLabel p4ThirdCard = new JLabel("");
+		p4ThirdCard.setBounds(p2.cardX(0.01), p2.cardY(0.20), p2.cardW(0.2), p2.cardH(0.2));
+		frame.getContentPane().add(p4ThirdCard);
+		
+		JLabel p4FourthCard = new JLabel("");
+		p4FourthCard.setBounds(p2.cardX(0.01), p2.cardY(0.16), p2.cardW(0.2), p2.cardH(0.2));
+		frame.getContentPane().add(p4FourthCard);
+		
+		JLabel p4FifthCard = new JLabel("");
+		p4FifthCard.setBounds(p2.cardX(0.01), p2.cardY(0.12), p2.cardW(0.2), p2.cardH(0.2));
+		frame.getContentPane().add(p4FifthCard);
+		
+		JLabel p4SixthCard = new JLabel("");
+		p4SixthCard.setBounds(p2.cardX(0.01), p2.cardY(0.08), p2.cardW(0.2), p2.cardH(0.2));
+		frame.getContentPane().add(p4SixthCard);
+		
+		JLabel p4SeventhCard = new JLabel("");
+		p4SeventhCard.setBounds(p2.cardX(0.01), p2.cardY(0.04), p2.cardW(0.2), p2.cardH(0.2));
+		frame.getContentPane().add(p4SeventhCard);
+		
+		JLabel p4EigthCard = new JLabel("");
+		p4EigthCard.setBounds(p2.cardX(0.01), p2.cardY(0.00), p2.cardW(0.2), p2.cardH(0.2));
+		frame.getContentPane().add(p4EigthCard);
+		
 		btnDealCards.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				/*
-				 * BufferedImage img =
-				 * urlToImage("C:\\Users\\kupat\\git\\BelotGame\\BelotGame\\images\\" +
-				 * newDeckOfCards.get(0)); img = p1.rotateClockwise90(img); ImageIcon im = new
-				 * ImageIcon(img);
-				 */
 				p1FirsCard.setIcon(p1.dealCard(newDeckOfCards, 0));
 				p1SecondCard.setIcon(p1.dealCard(newDeckOfCards, 1));
 				p1ThirdCard.setIcon(p1.dealCard(newDeckOfCards, 2));
-				p1FourthCard.setIcon(p1.dealCard(newDeckOfCards, 6));
-				p1FifthCard.setIcon(p1.dealCard(newDeckOfCards, 7));
+				p1FourthCard.setIcon(p1.dealCard(newDeckOfCards, 12));
+				p1FifthCard.setIcon(p1.dealCard(newDeckOfCards, 13));
 				
 				p2FirstCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 3));
 				p2SecondCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 4));
 				p2ThirdCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 5));
-				p2FourthCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 8));
-				p2FifthCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 9));
+				p2FourthCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 14));
+				p2FifthCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 15));
+				
+				p3FirsCard.setIcon(p3.dealCard(newDeckOfCards, 6));
+				p3SecondCard.setIcon(p3.dealCard(newDeckOfCards, 7));
+				p3ThirdCard.setIcon(p3.dealCard(newDeckOfCards, 8));
+				p3FourthCard.setIcon(p3.dealCard(newDeckOfCards, 16));
+				p3FifthCard.setIcon(p3.dealCard(newDeckOfCards, 17));
+				
+				p4FirstCard.setIcon(p4.dealOpponentsCards(newDeckOfCards, p4, 9));
+				p4SecondCard.setIcon(p4.dealOpponentsCards(newDeckOfCards, p4, 10));
+				p4ThirdCard.setIcon(p4.dealOpponentsCards(newDeckOfCards, p4, 11));
+				p4FourthCard.setIcon(p4.dealOpponentsCards(newDeckOfCards, p4, 18));
+				p4FifthCard.setIcon(p4.dealOpponentsCards(newDeckOfCards, p4, 19));
 			}
 			
 			
@@ -188,7 +252,7 @@ public class gui {
 
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				for(int i = 0; i < 10; i++)
+				for(int i = 0; i < 20; i++)
 				{
 					newDeckOfCards.remove(0);
 					newDeckOfCards.trimToSize();
@@ -204,6 +268,14 @@ public class gui {
 						 p2SixthCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 3));
 						 p2SeventhCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 4));
 						 p2EigthCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 5));
+						 
+						 p3SixthCard.setIcon(p3.dealCard(newDeckOfCards, 6));
+						 p3SeventhCard.setIcon(p3.dealCard(newDeckOfCards, 7));
+						 p3EigthCard.setIcon(p3.dealCard(newDeckOfCards, 8));
+						 
+						 p4SixthCard.setIcon(p4.dealOpponentsCards(newDeckOfCards, p4, 9));
+						 p4SeventhCard.setIcon(p4.dealOpponentsCards(newDeckOfCards, p4, 10));
+						 p4EigthCard.setIcon(p4.dealOpponentsCards(newDeckOfCards, p4, 11));
 					  }
 				}
 				
