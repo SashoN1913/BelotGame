@@ -53,28 +53,16 @@ public class gui {
 	 */
 	private Deck deck;
 	private Cards card;
-	//private ImageView activeImageView;
 	private void initialize() {
 		int currentWidth = 1920;
 		int currentH = 800;
+		Player p1 = new Player();
 		deck = new Deck();
 		frame = new JFrame();
 		frame.setSize(currentWidth, currentH);
-		//frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		int firstX = (int)Math.round(currentWidth*0.2);
-		int secondX = (int)Math.round(currentWidth*0.24);
-		int thirdX = (int)Math.round(currentWidth*0.28);
-		int fourthX = (int)Math.round(currentWidth*0.32);
-		int fifthX = (int)Math.round(currentWidth*0.36);
-		int sixthX = (int)Math.round(currentWidth*0.40);
-		int seventhX = (int)Math.round(currentWidth*0.44);
-		int eigthX = (int)Math.round(currentWidth*0.48);
 		
-		int y = (int)Math.round(currentWidth*0.01125);
-		int w = (int)Math.round(currentWidth*0.2);
-		int h = (int)Math.round(currentH*1.5);
 		ArrayList<String> newDeckOfCards = deck.deckWithNames();
 		Collections.shuffle(newDeckOfCards);
 		JLabel lblNewLabel = new JLabel("");
@@ -85,7 +73,7 @@ public class gui {
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel firstCard = new JLabel("");
-		firstCard.setBounds(firstX, y, w, h);
+		firstCard.setBounds(p1.cardX(0.20), p1.cardY(0.01125), p1.cardW(0.2), p1.cardH(1.5));
 		frame.getContentPane().add(firstCard);
 		
 		JButton btnDealCards = new JButton("Раздаване");
@@ -93,31 +81,31 @@ public class gui {
 		frame.getContentPane().add(btnDealCards);
 		
 		JLabel secondCard = new JLabel("");
-		secondCard.setBounds(secondX, y, w, h);
+		secondCard.setBounds(p1.cardX(0.24), p1.cardY(0.01125), p1.cardW(0.2), p1.cardH(1.5));
 		frame.getContentPane().add(secondCard);
 		
 		JLabel thirdCard = new JLabel("");
-		thirdCard.setBounds(thirdX, y, w, h);
+		thirdCard.setBounds(p1.cardX(0.28), p1.cardY(0.01125), p1.cardW(0.2), p1.cardH(1.5));
 		frame.getContentPane().add(thirdCard);
 		
 		JLabel fourthCard = new JLabel("");
-		fourthCard.setBounds(fourthX, y, w, h);
+		fourthCard.setBounds(p1.cardX(0.32), p1.cardY(0.01125), p1.cardW(0.2), p1.cardH(1.5));
 		frame.getContentPane().add(fourthCard);
 		
 		JLabel fifthCard = new JLabel("");
-		fifthCard.setBounds(fifthX, y, w, h);
+		fifthCard.setBounds(p1.cardX(0.36), p1.cardY(0.01125), p1.cardW(0.2), p1.cardH(1.5));
 		frame.getContentPane().add(fifthCard);
 		
 		JLabel sixthCard = new JLabel("");
-		sixthCard.setBounds(sixthX, y, w, h);
+		sixthCard.setBounds(p1.cardX(0.40), p1.cardY(0.01125), p1.cardW(0.2), p1.cardH(1.5));
 		frame.getContentPane().add(sixthCard);
 		
 		JLabel seventhCard = new JLabel("");
-		seventhCard.setBounds(seventhX, y, w, h);
+		seventhCard.setBounds(p1.cardX(0.44), p1.cardY(0.01125), p1.cardW(0.2), p1.cardH(1.5));
 		frame.getContentPane().add(seventhCard);
 		
 		JLabel eigthCard = new JLabel("");
-		eigthCard.setBounds(eigthX, y, w, h);
+		eigthCard.setBounds(p1.cardX(0.48), p1.cardY(0.01125), p1.cardW(0.2), p1.cardH(1.5));
 		frame.getContentPane().add(eigthCard);
 		
 		Choice choice = new Choice();
@@ -126,6 +114,7 @@ public class gui {
 		choice.add("Пас");
 		choice.add("Спатия");
 		choice.add("Каро");
+		choice.add("Купа");
 		choice.add("Пика");
 		choice.add("Без коз");
 		choice.add("Всичко коз");
@@ -135,45 +124,25 @@ public class gui {
 			public void actionPerformed(ActionEvent e) 
 			{	
 				ArrayList<String> card = newDeckOfCards;
-				//System.out.println(card[0]);
-				for(int i = 0; i < 5; i++)
-				{
-					//System.out.println(card.get(i));
-				}
-				//System.out.println("Тест" + card.get(2));
-				//System.out.println(card[0]);
-				//Image img = new ImageIcon(this.getClass().getResource("/" + card[0])).getImage();
 				firstCard.setIcon(new ImageIcon(this.getClass().getResource("/" + card.get(0))));
 				secondCard.setIcon(new ImageIcon(this.getClass().getResource("/" + card.get(1))));
 				thirdCard.setIcon(new ImageIcon(this.getClass().getResource("/" + card.get(2))));
 				fourthCard.setIcon(new ImageIcon(this.getClass().getResource("/" + card.get(3))));
 				fifthCard.setIcon(new ImageIcon(this.getClass().getResource("/" + card.get(4))));
-				
-				//System.out.println("peta kart" + card.get(5));
-				System.out.println(card);
 			}
 			
 			
 		});
-		for(int i = 0; i < 4; i++)
-		{
-			newDeckOfCards.remove(i);
-		}
-		System.out.println(newDeckOfCards.get(0));
 		
-		newDeckOfCards.trimToSize();
 		choice.addItemListener(new ItemListener() {
 
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				//System.out.println(newDeckOfCards);
 				for(int i = 0; i < 5; i++)
 				{
 					newDeckOfCards.remove(0);
 					newDeckOfCards.trimToSize();
 				}
-				//newDeckOfCards.trimToSize();
-				System.out.println(newDeckOfCards);
 				if(e.getSource() == choice)
 				{
 					 if(!choice.getSelectedItem().equals("Пас")) 
