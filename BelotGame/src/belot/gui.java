@@ -55,13 +55,26 @@ public class gui {
 	private Cards card;
 	//private ImageView activeImageView;
 	private void initialize() {
+		int currentWidth = 1920;
+		int currentH = 800;
 		deck = new Deck();
 		frame = new JFrame();
-		frame.setBounds(100, 100, 537, 386);
+		frame.setSize(currentWidth, currentH);
 		//frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		int firstX = (int)Math.round(currentWidth*0.2);
+		int secondX = (int)Math.round(currentWidth*0.24);
+		int thirdX = (int)Math.round(currentWidth*0.28);
+		int fourthX = (int)Math.round(currentWidth*0.32);
+		int fifthX = (int)Math.round(currentWidth*0.36);
+		int sixthX = (int)Math.round(currentWidth*0.40);
+		int seventhX = (int)Math.round(currentWidth*0.44);
+		int eigthX = (int)Math.round(currentWidth*0.48);
 		
+		int y = (int)Math.round(currentWidth*0.01125);
+		int w = (int)Math.round(currentWidth*0.2);
+		int h = (int)Math.round(currentH*1.5);
 		ArrayList<String> newDeckOfCards = deck.deckWithNames();
 		Collections.shuffle(newDeckOfCards);
 		JLabel lblNewLabel = new JLabel("");
@@ -72,7 +85,7 @@ public class gui {
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel firstCard = new JLabel("");
-		firstCard.setBounds(61, 216, 72, 120);
+		firstCard.setBounds(firstX, y, w, h);
 		frame.getContentPane().add(firstCard);
 		
 		JButton btnDealCards = new JButton("Раздаване");
@@ -80,31 +93,31 @@ public class gui {
 		frame.getContentPane().add(btnDealCards);
 		
 		JLabel secondCard = new JLabel("");
-		secondCard.setBounds(131, 216, 78, 120);
+		secondCard.setBounds(secondX, y, w, h);
 		frame.getContentPane().add(secondCard);
 		
 		JLabel thirdCard = new JLabel("");
-		thirdCard.setBounds(235, 216, 78, 120);
+		thirdCard.setBounds(thirdX, y, w, h);
 		frame.getContentPane().add(thirdCard);
 		
 		JLabel fourthCard = new JLabel("");
-		fourthCard.setBounds(333, 216, 78, 120);
+		fourthCard.setBounds(fourthX, y, w, h);
 		frame.getContentPane().add(fourthCard);
 		
 		JLabel fifthCard = new JLabel("");
-		fifthCard.setBounds(421, 216, 78, 120);
+		fifthCard.setBounds(fifthX, y, w, h);
 		frame.getContentPane().add(fifthCard);
 		
 		JLabel sixthCard = new JLabel("");
-		sixthCard.setBounds(61, 105, 78, 105);
+		sixthCard.setBounds(sixthX, y, w, h);
 		frame.getContentPane().add(sixthCard);
 		
 		JLabel seventhCard = new JLabel("");
-		seventhCard.setBounds(163, 105, 78, 107);
+		seventhCard.setBounds(seventhX, y, w, h);
 		frame.getContentPane().add(seventhCard);
 		
 		JLabel eigthCard = new JLabel("");
-		eigthCard.setBounds(267, 105, 72, 100);
+		eigthCard.setBounds(eigthX, y, w, h);
 		frame.getContentPane().add(eigthCard);
 		
 		Choice choice = new Choice();
