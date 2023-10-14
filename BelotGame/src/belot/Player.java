@@ -1,5 +1,13 @@
 package belot;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class Player 
@@ -54,6 +62,39 @@ public class Player
 	{
 		return (int)Math.round(screenH*value);
 	}
+	
+	public ImageIcon dealCard(ArrayList<String> newDeckOfCards, int i)
+	{
+		return new ImageIcon(this.getClass().getResource("/" + newDeckOfCards.get(i)));
+	}
+	public static BufferedImage rotateClockwise90(BufferedImage src) {
+	    int w = src.getWidth();
+	    int h = src.getHeight();
+	    BufferedImage dest = new BufferedImage(h, w, src.getType());
+	    for (int y = 0; y < h; y++) 
+	        for (int x = 0; x < w; x++) 
+	            dest.setRGB(y, w - x - 1, src.getRGB(x, y));
+	    return dest;
+	}
+	
+	  public static BufferedImage urlToImage(String string) {
+	        BufferedImage image;
+	        try {
+	            image = ImageIO.read(new File(string));
+	        } catch (IOException e) {
+	            throw new RuntimeException("Failed to read image from URL: " + string, e);
+	        }
+	        return image;
+	    }
+	
+	public ImageIcon dealOpponentsCards(ArrayList<String> newDeckOfCards, Player p1, int i)
+	{
+		BufferedImage img = urlToImage("C:\\Users\\kupat\\git\\BelotGame\\BelotGame\\images\\" + newDeckOfCards.get(i));
+		img = p1.rotateClockwise90(img);
+		ImageIcon im = new ImageIcon(img);
+		return im;
+	}
+	
 	public Player() {
 		super();
 		// TODO Auto-generated constructor stub
