@@ -6,6 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.ImageIcon;
@@ -34,7 +37,9 @@ public class gui {
 			}
 		});
 	}
-
+	
+	
+	
 	/**
 	 * Create the application.
 	 */
@@ -88,35 +93,35 @@ public class gui {
 		choice.add("Всичко коз");
 		
 		JLabel p1FirsCard = new JLabel("");
-		p1FirsCard.setBounds(p1.cardX(0.20), p1.cardY(0.01125), p1.cardW(0.2), p1.cardH(1.5));
+		p1FirsCard.setBounds(p1.cardX(0.20), p1.cardY(0.28), p1.cardW(0.2), p1.cardH(0.2));
 		frame.getContentPane().add(p1FirsCard);
 		
 		JLabel p1SecondCard = new JLabel("");
-		p1SecondCard.setBounds(p1.cardX(0.24), p1.cardY(0.01125), p1.cardW(0.2), p1.cardH(1.5));
+		p1SecondCard.setBounds(p1.cardX(0.24), p1.cardY(0.28), p1.cardW(0.2), p1.cardH(0.2));
 		frame.getContentPane().add(p1SecondCard);
 		
 		JLabel p1ThirdCard = new JLabel("");
-		p1ThirdCard.setBounds(p1.cardX(0.28), p1.cardY(0.01125), p1.cardW(0.2), p1.cardH(1.5));
+		p1ThirdCard.setBounds(p1.cardX(0.28), p1.cardY(0.28), p1.cardW(0.2), p1.cardH(0.2));
 		frame.getContentPane().add(p1ThirdCard);
 		
 		JLabel p1FourthCard = new JLabel("");
-		p1FourthCard.setBounds(p1.cardX(0.32), p1.cardY(0.01125), p1.cardW(0.2), p1.cardH(1.5));
+		p1FourthCard.setBounds(p1.cardX(0.32), p1.cardY(0.28), p1.cardW(0.2), p1.cardH(0.2));
 		frame.getContentPane().add(p1FourthCard);
 		
 		JLabel p1FifthCard = new JLabel("");
-		p1FifthCard.setBounds(p1.cardX(0.36), p1.cardY(0.01125), p1.cardW(0.2), p1.cardH(1.5));
+		p1FifthCard.setBounds(p1.cardX(0.36), p1.cardY(0.28), p1.cardW(0.2), p1.cardH(0.2));
 		frame.getContentPane().add(p1FifthCard);
 		
 		JLabel p1SixthCard = new JLabel("");
-		p1SixthCard.setBounds(p1.cardX(0.40), p1.cardY(0.01125), p1.cardW(0.2), p1.cardH(1.5));
+		p1SixthCard.setBounds(p1.cardX(0.40), p1.cardY(0.28), p1.cardW(0.2), p1.cardH(0.2));
 		frame.getContentPane().add(p1SixthCard);
 		
 		JLabel p1SeventhCard = new JLabel("");
-		p1SeventhCard.setBounds(p1.cardX(0.44), p1.cardY(0.01125), p1.cardW(0.2), p1.cardH(1.5));
+		p1SeventhCard.setBounds(p1.cardX(0.44), p1.cardY(0.28), p1.cardW(0.2), p1.cardH(0.2));
 		frame.getContentPane().add(p1SeventhCard);
 		
 		JLabel p1EigthCard = new JLabel("");
-		p1EigthCard.setBounds(p1.cardX(0.48), p1.cardY(0.01125), p1.cardW(0.2), p1.cardH(1.5));
+		p1EigthCard.setBounds(p1.cardX(0.48), p1.cardY(0.28), p1.cardW(0.2), p1.cardH(0.2));
 		frame.getContentPane().add(p1EigthCard);
 		
 		JLabel p2FirstCard = new JLabel("");
@@ -215,12 +220,31 @@ public class gui {
 		p4EigthCard.setBounds(p2.cardX(0.01), p2.cardY(0.00), p2.cardW(0.2), p2.cardH(0.2));
 		frame.getContentPane().add(p4EigthCard);
 		
+		JLabel p1Cards = new JLabel("");
+		p1Cards.setBounds(p1.cardX(0.28), p1.cardY(0.2), p1.cardW(0.2), p1.cardH(0.2));
+		frame.getContentPane().add(p1Cards);
+		
+		JLabel p3Cards = new JLabel("");
+		p3Cards.setBounds(p1.cardX(0.28), p1.cardY(0.01125), p1.cardW(0.2), p1.cardH(0.7));
+		frame.getContentPane().add(p3Cards);
+		
 		btnDealCards.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
 				p1FirsCard.setIcon(p1.dealCard(newDeckOfCards, 0));
+				p1FirsCard.addMouseListener(new MouseAdapter()
+				{
+					@Override
+	                public void mouseClicked(MouseEvent e) 
+					{
+						System.out.println("label is clicked");
+						p1Cards.setIcon(p1.dealCard(newDeckOfCards, 0));
+						p1FirsCard.setIcon(null);
+						
+	                }
+				});
 				p1SecondCard.setIcon(p1.dealCard(newDeckOfCards, 1));
 				p1ThirdCard.setIcon(p1.dealCard(newDeckOfCards, 2));
 				p1FourthCard.setIcon(p1.dealCard(newDeckOfCards, 12));
@@ -233,6 +257,17 @@ public class gui {
 				p2FifthCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 15));
 				
 				p3FirsCard.setIcon(p3.dealCard(newDeckOfCards, 6));
+				p3FirsCard.addMouseListener(new MouseAdapter()
+				{
+					@Override
+	                public void mouseClicked(MouseEvent e) 
+					{
+						System.out.println("label 2 is clicked");
+						p3Cards.setIcon(p1.dealCard(newDeckOfCards, 6));
+						p3FirsCard.setIcon(null);
+						
+	                }
+				});
 				p3SecondCard.setIcon(p3.dealCard(newDeckOfCards, 7));
 				p3ThirdCard.setIcon(p3.dealCard(newDeckOfCards, 8));
 				p3FourthCard.setIcon(p3.dealCard(newDeckOfCards, 16));
@@ -282,6 +317,12 @@ public class gui {
 			}});
 		 
 	
-
+				//pravq edin spisyk s kartite na vseki igrach ArrayList p1Cards ArrayList p2Cards<String>
+				//Pravq si klas kojto sydyrja vsichki terci ili metod i sravnqvam po imena na snimki naprimer 789 91J i tiq na pika
+				//sa v edin metod i pravq if p1Cards.contains(terca()) i tova vryshta true ili false terca ako e true vika terca i taka
+				//za otgovarqneto na boite kato cykne pyrviqt karta vzimam ot labela po sredata koq e kartata mu i chekvam dali sledvashtiq
+				// igrach ima takava naprimer ako hvyrli spatiq chekvam if(p1Cards.contains(image ot c1 - c8)) ako da ako e koz dali moje 
+				// da se kachi ako ne e koz i nqma spatiq dali moje da caka a ako ne e koz i ima si izbira edna ot vsichkite i taka za 
+				// vsqka boq i za 50 i 100 i tiq raboti predi vsqka igra se puska proverkata za 50 100 kareta i terci
 	}
 }
