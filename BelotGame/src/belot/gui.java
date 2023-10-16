@@ -51,10 +51,17 @@ public class gui {
 	 * Initialize the contents of the frame.
 	 */
 	
-	private Deck deck;
-	private void initialize() {
+		private Deck deck;
+		private void initialize() 
+		{
 		final int currentWidth = 1920;
 		final int currentH = 800;
+		ArrayList<String> firstPlayerDeck = new ArrayList<>();
+		ArrayList<String> secondPlayerDeck = new ArrayList<>();
+		ArrayList<String> thirdPlayerDeck = new ArrayList<>();
+		ArrayList<String> fourthPlayerDeck = new ArrayList<>();
+		ArrayList<JLabel> firstPlayerLabels = new ArrayList<>();
+		
 		
 		Player p1 = new Player();
 		Player p2 = new Player();
@@ -77,13 +84,17 @@ public class gui {
 		frame.getContentPane().add(lblNewLabel);
 		
 		JButton btnDealCards = new JButton("Раздаване");
-		btnDealCards.setBounds(377, 144, 89, 23);
+		btnDealCards.setBounds(300, 400, 89, 23);
 		frame.getContentPane().add(btnDealCards);
+		
+		JButton btnComplete = new JButton("Ок");
+		btnComplete.setBounds(377, 400, 99, 23);
 		
 		Choice choice = new Choice();
 		choice.setBounds(163, 79, 118, 20);
 		frame.getContentPane().add(choice);
 		
+		choice.add("");
 		choice.add("Пас");
 		choice.add("Спатия");
 		choice.add("Каро");
@@ -234,21 +245,21 @@ public class gui {
 			public void actionPerformed(ActionEvent e) 
 			{
 				p1FirsCard.setIcon(p1.dealCard(newDeckOfCards, 0));
-				p1FirsCard.addMouseListener(new MouseAdapter()
-				{
-					@Override
-	                public void mouseClicked(MouseEvent e) 
-					{
-						System.out.println("label is clicked");
-						p1Cards.setIcon(p1.dealCard(newDeckOfCards, 0));
-						p1FirsCard.setIcon(null);
-						
-	                }
-				});
+				String img = ((ImageIcon) p1FirsCard.getIcon()).getDescription();  //path to photo file:/C:/Users/kupat/git/BelotGame/BelotGame/bin/c8.png
+				
+				System.out.println(img);
+				
+				
 				p1SecondCard.setIcon(p1.dealCard(newDeckOfCards, 1));
 				p1ThirdCard.setIcon(p1.dealCard(newDeckOfCards, 2));
 				p1FourthCard.setIcon(p1.dealCard(newDeckOfCards, 12));
 				p1FifthCard.setIcon(p1.dealCard(newDeckOfCards, 13));
+				
+				firstPlayerDeck.add(newDeckOfCards.get(0));
+				firstPlayerDeck.add(newDeckOfCards.get(1));
+				firstPlayerDeck.add(newDeckOfCards.get(2));
+				firstPlayerDeck.add(newDeckOfCards.get(12));
+				firstPlayerDeck.add(newDeckOfCards.get(13));
 				
 				p2FirstCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 3));
 				p2SecondCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 4));
@@ -256,35 +267,44 @@ public class gui {
 				p2FourthCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 14));
 				p2FifthCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 15));
 				
+				secondPlayerDeck.add(newDeckOfCards.get(3));
+				secondPlayerDeck.add(newDeckOfCards.get(4));
+				secondPlayerDeck.add(newDeckOfCards.get(5));
+				secondPlayerDeck.add(newDeckOfCards.get(14));
+				secondPlayerDeck.add(newDeckOfCards.get(15));
+				
 				p3FirsCard.setIcon(p3.dealCard(newDeckOfCards, 6));
-				p3FirsCard.addMouseListener(new MouseAdapter()
-				{
-					@Override
-	                public void mouseClicked(MouseEvent e) 
-					{
-						System.out.println("label 2 is clicked");
-						p3Cards.setIcon(p1.dealCard(newDeckOfCards, 6));
-						p3FirsCard.setIcon(null);
-						
-	                }
-				});
 				p3SecondCard.setIcon(p3.dealCard(newDeckOfCards, 7));
 				p3ThirdCard.setIcon(p3.dealCard(newDeckOfCards, 8));
 				p3FourthCard.setIcon(p3.dealCard(newDeckOfCards, 16));
 				p3FifthCard.setIcon(p3.dealCard(newDeckOfCards, 17));
+				
+				thirdPlayerDeck.add(newDeckOfCards.get(6));
+				thirdPlayerDeck.add(newDeckOfCards.get(7));
+				thirdPlayerDeck.add(newDeckOfCards.get(8));
+				thirdPlayerDeck.add(newDeckOfCards.get(16));
+				thirdPlayerDeck.add(newDeckOfCards.get(17));
 				
 				p4FirstCard.setIcon(p4.dealOpponentsCards(newDeckOfCards, p4, 9));
 				p4SecondCard.setIcon(p4.dealOpponentsCards(newDeckOfCards, p4, 10));
 				p4ThirdCard.setIcon(p4.dealOpponentsCards(newDeckOfCards, p4, 11));
 				p4FourthCard.setIcon(p4.dealOpponentsCards(newDeckOfCards, p4, 18));
 				p4FifthCard.setIcon(p4.dealOpponentsCards(newDeckOfCards, p4, 19));
+				
+				fourthPlayerDeck.add(newDeckOfCards.get(9));
+				fourthPlayerDeck.add(newDeckOfCards.get(10));
+				fourthPlayerDeck.add(newDeckOfCards.get(11));
+				fourthPlayerDeck.add(newDeckOfCards.get(18));
+				fourthPlayerDeck.add(newDeckOfCards.get(19));
+				
+				btnDealCards.setVisible(false);
 			}
 			
 			
 		});
 		
 		choice.addItemListener(new ItemListener() {
-
+			
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				for(int i = 0; i < 20; i++)
@@ -292,30 +312,122 @@ public class gui {
 					newDeckOfCards.remove(0);
 					newDeckOfCards.trimToSize();
 				}
+				frame.getContentPane().add(btnComplete);
 				if(e.getSource() == choice)
 				{
-					 if(!choice.getSelectedItem().equals("Пас")) 
-					  { 
-						 p1SixthCard.setIcon(p1.dealCard(newDeckOfCards, 0));
-						 p1SeventhCard.setIcon(p1.dealCard(newDeckOfCards, 1));
-						 p1EigthCard.setIcon(p1.dealCard(newDeckOfCards, 2));
-						 
-						 p2SixthCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 3));
-						 p2SeventhCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 4));
-						 p2EigthCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 5));
-						 
-						 p3SixthCard.setIcon(p3.dealCard(newDeckOfCards, 6));
-						 p3SeventhCard.setIcon(p3.dealCard(newDeckOfCards, 7));
-						 p3EigthCard.setIcon(p3.dealCard(newDeckOfCards, 8));
-						 
-						 p4SixthCard.setIcon(p4.dealOpponentsCards(newDeckOfCards, p4, 9));
-						 p4SeventhCard.setIcon(p4.dealOpponentsCards(newDeckOfCards, p4, 10));
-						 p4EigthCard.setIcon(p4.dealOpponentsCards(newDeckOfCards, p4, 11));
-					  }
+					//frame.getContentPane().add(btnComplete);
+					btnComplete.addActionListener(new ActionListener() {
+
+						@Override
+						public void actionPerformed(ActionEvent e) 
+						{
+							if(!choice.getSelectedItem().equals("Пас")) 
+							  { 
+								 p1SixthCard.setIcon(p1.dealCard(newDeckOfCards, 0));
+								 p1SeventhCard.setIcon(p1.dealCard(newDeckOfCards, 1));
+								 p1EigthCard.setIcon(p1.dealCard(newDeckOfCards, 2));
+								 
+								 firstPlayerDeck.add(newDeckOfCards.get(0));
+								 firstPlayerDeck.add(newDeckOfCards.get(1));
+								 firstPlayerDeck.add(newDeckOfCards.get(2));
+								 
+								 p2SixthCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 3));
+								 p2SeventhCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 4));
+								 p2EigthCard.setIcon(p2.dealOpponentsCards(newDeckOfCards, p2, 5));
+								 
+								 secondPlayerDeck.add(newDeckOfCards.get(3));
+								 secondPlayerDeck.add(newDeckOfCards.get(4));
+								 secondPlayerDeck.add(newDeckOfCards.get(5));
+								 
+								 p3SixthCard.setIcon(p3.dealCard(newDeckOfCards, 6));
+								 p3SeventhCard.setIcon(p3.dealCard(newDeckOfCards, 7));
+								 p3EigthCard.setIcon(p3.dealCard(newDeckOfCards, 8));
+								 
+								 thirdPlayerDeck.add(newDeckOfCards.get(6));
+								 thirdPlayerDeck.add(newDeckOfCards.get(7));
+								 thirdPlayerDeck.add(newDeckOfCards.get(8));
+								 
+								 p4SixthCard.setIcon(p4.dealOpponentsCards(newDeckOfCards, p4, 9));
+								 p4SeventhCard.setIcon(p4.dealOpponentsCards(newDeckOfCards, p4, 10));
+								 p4EigthCard.setIcon(p4.dealOpponentsCards(newDeckOfCards, p4, 11));
+								 
+								 fourthPlayerDeck.add(newDeckOfCards.get(9));
+								 fourthPlayerDeck.add(newDeckOfCards.get(10));
+								 fourthPlayerDeck.add(newDeckOfCards.get(11));
+							  }
+							else
+							{
+								//second players gives call
+							}
+						}
+						
+					});
+					
 				}
 				
 			}});
-		 
+	
+			p3FirsCard.addMouseListener(new MouseAdapter()
+			{
+				@Override
+	            public void mouseClicked(MouseEvent e) 
+				{
+					System.out.println(thirdPlayerDeck.get(0));
+					p3Cards.setIcon(p1.dealCard(thirdPlayerDeck, 0));
+					p3FirsCard.setIcon(null);
+					
+	            }
+			});
+			
+			firstPlayerLabels.add(p1FirsCard);
+			firstPlayerLabels.add(p1SecondCard);
+			firstPlayerLabels.add(p1ThirdCard);
+			firstPlayerLabels.add(p1FourthCard);
+			firstPlayerLabels.add(p1FifthCard);
+			firstPlayerLabels.add(p1SixthCard);
+			firstPlayerLabels.add(p1SeventhCard);
+			firstPlayerLabels.add(p1EigthCard);
+			
+			JButton btnStart = new JButton("Start");
+			btnStart.setBounds(1271, 682, 89, 23);
+			frame.getContentPane().add(btnStart);
+			
+			
+			
+			btnStart.addActionListener(new ActionListener() 
+			{
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					int [] thirdPlayerCards = p3.deckInNumbers(thirdPlayerDeck);
+					int [] firstPlayerCards = p1.deckInNumbers(firstPlayerDeck);
+					System.out.println("karta" + thirdPlayerCards[0]);
+					for(int i = 0; i < thirdPlayerDeck.size(); i++)
+					{
+						System.out.println(firstPlayerCards[i]);
+						if(firstPlayerCards[i] > thirdPlayerCards[0])
+						{
+							System.out.println("pechalba");
+							int c = i;
+							firstPlayerLabels.get(i).addMouseListener(new MouseAdapter() 
+							{
+								@Override
+					            public void mouseClicked(MouseEvent e) 
+								{
+									System.out.println("Label is clicked");
+									p1Cards.setIcon(p1.dealCard(firstPlayerDeck, c));
+									firstPlayerLabels.get(c).setIcon(null);
+					            }
+							});
+							
+						}
+					}
+					
+				}
+				
+			});
+			
+			
 	
 				//pravq edin spisyk s kartite na vseki igrach ArrayList p1Cards ArrayList p2Cards<String>
 				//Pravq si klas kojto sydyrja vsichki terci ili metod i sravnqvam po imena na snimki naprimer 789 91J i tiq na pika

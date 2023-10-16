@@ -67,7 +67,7 @@ public class Player
 	{
 		return new ImageIcon(this.getClass().getResource("/" + newDeckOfCards.get(i)));
 	}
-	public static BufferedImage rotateClockwise90(BufferedImage src) {
+	public BufferedImage rotateClockwise90(BufferedImage src) {
 	    int w = src.getWidth();
 	    int h = src.getHeight();
 	    BufferedImage dest = new BufferedImage(h, w, src.getType());
@@ -89,10 +89,19 @@ public class Player
 	
 	public ImageIcon dealOpponentsCards(ArrayList<String> newDeckOfCards, Player p1, int i)
 	{
-		BufferedImage img = urlToImage("C:\\Users\\kupat\\git\\BelotGame\\BelotGame\\images\\" + newDeckOfCards.get(i));
-		img = p1.rotateClockwise90(img);
-		ImageIcon im = new ImageIcon(img);
-		return im;
+		return new ImageIcon(p1.rotateClockwise90(urlToImage(("C:\\Users\\kupat\\git\\BelotGame\\BelotGame\\images\\" 
+																+ newDeckOfCards.get(i)))));
+	}
+	
+	public int[] deckInNumbers(ArrayList<String> playerDeck) 
+	{
+		int[] arr = new int[playerDeck.size()];
+		for(int i = 0; i < 8; i++)
+		{
+			String numberOnly= playerDeck.get(i).replaceAll("[^0-9]", "");
+			arr[i] = Integer.parseInt(numberOnly);
+		}
+		return arr;
 	}
 	
 	public Player() {
