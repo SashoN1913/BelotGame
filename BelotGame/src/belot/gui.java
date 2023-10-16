@@ -401,20 +401,17 @@ public class gui {
 				public void actionPerformed(ActionEvent e) {
 					int [] thirdPlayerCards = p3.deckInNumbers(thirdPlayerDeck);
 					int [] firstPlayerCards = p1.deckInNumbers(firstPlayerDeck);
-					System.out.println("karta" + thirdPlayerCards[0]);
 					for(int i = 0; i < thirdPlayerDeck.size(); i++)
 					{
 						System.out.println(firstPlayerCards[i]);
 						if(firstPlayerCards[i] > thirdPlayerCards[0])
 						{
-							System.out.println("pechalba");
 							int c = i;
 							firstPlayerLabels.get(i).addMouseListener(new MouseAdapter() 
 							{
 								@Override
 					            public void mouseClicked(MouseEvent e) 
 								{
-									System.out.println("Label is clicked");
 									p1Cards.setIcon(p1.dealCard(firstPlayerDeck, c));
 									firstPlayerLabels.get(c).setIcon(null);
 					            }
