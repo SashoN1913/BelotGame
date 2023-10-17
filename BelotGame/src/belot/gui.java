@@ -61,6 +61,7 @@ public class gui {
 		ArrayList<String> thirdPlayerDeck = new ArrayList<>();
 		ArrayList<String> fourthPlayerDeck = new ArrayList<>();
 		ArrayList<JLabel> firstPlayerLabels = new ArrayList<>();
+		ArrayList<JLabel> thirdlayerLabels = new ArrayList<>();
 		
 		
 		Player p1 = new Player();
@@ -168,35 +169,35 @@ public class gui {
 		frame.getContentPane().add(p2EigthCard);
 		
 		JLabel p3FirsCard = new JLabel("");
-		p3FirsCard.setBounds(p3.cardX(0.20), p3.cardY(0.01125), p3.cardW(0.2), p3.cardH(0.3));
+		p3FirsCard.setBounds(p3.cardX(0.20), p3.cardY(0.01125), p3.cardW(0.035), p3.cardH(0.3));
 		frame.getContentPane().add(p3FirsCard);
 		
 		JLabel p3SecondCard = new JLabel("");
-		p3SecondCard.setBounds(p3.cardX(0.24), p3.cardY(0.01125), p3.cardW(0.2), p3.cardH(0.3));
+		p3SecondCard.setBounds(p3.cardX(0.24), p3.cardY(0.01125), p3.cardW(0.035), p3.cardH(0.3));
 		frame.getContentPane().add(p3SecondCard);
 		
 		JLabel p3ThirdCard = new JLabel("");
-		p3ThirdCard.setBounds(p3.cardX(0.28), p3.cardY(0.01125), p3.cardW(0.2), p3.cardH(0.3));
+		p3ThirdCard.setBounds(p3.cardX(0.28), p3.cardY(0.01125), p3.cardW(0.035), p3.cardH(0.3));
 		frame.getContentPane().add(p3ThirdCard);
 		
 		JLabel p3FourthCard = new JLabel("");
-		p3FourthCard.setBounds(p3.cardX(0.32), p3.cardY(0.01125), p3.cardW(0.2), p3.cardH(0.3));
+		p3FourthCard.setBounds(p3.cardX(0.32), p3.cardY(0.01125), p3.cardW(0.035), p3.cardH(0.3));
 		frame.getContentPane().add(p3FourthCard);
 		
 		JLabel p3FifthCard = new JLabel("");
-		p3FifthCard.setBounds(p3.cardX(0.36), p3.cardY(0.01125), p3.cardW(0.2), p3.cardH(0.3));
+		p3FifthCard.setBounds(p3.cardX(0.36), p3.cardY(0.01125), p3.cardW(0.035), p3.cardH(0.3));
 		frame.getContentPane().add(p3FifthCard);
 		
 		JLabel p3SixthCard = new JLabel("");
-		p3SixthCard.setBounds(p3.cardX(0.40), p3.cardY(0.01125), p3.cardW(0.2), p3.cardH(0.3));
+		p3SixthCard.setBounds(p3.cardX(0.40), p3.cardY(0.01125), p3.cardW(0.035), p3.cardH(0.3));
 		frame.getContentPane().add(p3SixthCard);
 		
 		JLabel p3SeventhCard = new JLabel("");
-		p3SeventhCard.setBounds(p3.cardX(0.44), p3.cardY(0.01125), p3.cardW(0.2), p3.cardH(0.3));
+		p3SeventhCard.setBounds(p3.cardX(0.44), p3.cardY(0.01125), p3.cardW(0.035), p3.cardH(0.3));
 		frame.getContentPane().add(p3SeventhCard);
 		
 		JLabel p3EigthCard = new JLabel("");
-		p3EigthCard.setBounds(p3.cardX(0.48), p3.cardY(0.01125), p3.cardW(0.2), p3.cardH(0.3));
+		p3EigthCard.setBounds(p3.cardX(0.48), p3.cardY(0.01125), p3.cardW(0.035), p3.cardH(0.3));
 		frame.getContentPane().add(p3EigthCard);
 		
 		JLabel p4FirstCard = new JLabel("");
@@ -367,18 +368,15 @@ public class gui {
 				
 			}});
 	
-			p3FirsCard.addMouseListener(new MouseAdapter()
-			{
-				@Override
-	            public void mouseClicked(MouseEvent e) 
-				{
-					System.out.println(thirdPlayerDeck.get(0));
-					p3Cards.setIcon(p1.dealCard(thirdPlayerDeck, 0));
-					p3FirsCard.setIcon(null);
-					
-	            }
-			});
-			
+		/*
+		 * p3FirsCard.addMouseListener(new MouseAdapter() {
+		 * 
+		 * @Override public void mouseClicked(MouseEvent e) {
+		 * System.out.println(thirdPlayerDeck.get(0));
+		 * p3Cards.setIcon(p1.dealCard(thirdPlayerDeck, 0)); p3FirsCard.setIcon(null);
+		 * 
+		 * } });
+		 */
 			firstPlayerLabels.add(p1FirsCard);
 			firstPlayerLabels.add(p1SecondCard);
 			firstPlayerLabels.add(p1ThirdCard);
@@ -387,6 +385,15 @@ public class gui {
 			firstPlayerLabels.add(p1SixthCard);
 			firstPlayerLabels.add(p1SeventhCard);
 			firstPlayerLabels.add(p1EigthCard);
+			
+			thirdlayerLabels.add(p3FirsCard);
+			thirdlayerLabels.add(p3SecondCard);
+			thirdlayerLabels.add(p3ThirdCard);
+			thirdlayerLabels.add(p3FourthCard);
+			thirdlayerLabels.add(p3FifthCard);
+			thirdlayerLabels.add(p3SixthCard);
+			thirdlayerLabels.add(p3SeventhCard);
+			thirdlayerLabels.add(p3EigthCard);
 			
 			JButton btnStart = new JButton("Start");
 			btnStart.setBounds(1271, 682, 89, 23);
@@ -401,12 +408,23 @@ public class gui {
 				public void actionPerformed(ActionEvent e) {
 					int [] thirdPlayerCards = p3.deckInNumbers(thirdPlayerDeck);
 					int [] firstPlayerCards = p1.deckInNumbers(firstPlayerDeck);
-					for(int i = 0; i < thirdPlayerDeck.size(); i++)
+					for(int i = 0; i <= 8; i++)
 					{
-						System.out.println(firstPlayerCards[i]);
+						int c = i;
+							thirdlayerLabels.get(i).addMouseListener(new MouseAdapter() 
+							{
+								
+								@Override
+					            public void mouseClicked(MouseEvent e) 
+								{
+									onMouseClicked(e, thirdlayerLabels, p3Cards, thirdPlayerDeck);
+									//p3Cards.setIcon(p3.dealCard(thirdPlayerDeck, c));
+									//thirdlayerLabels.get(c).setIcon(null);
+					            }
+							});
+						//System.out.println(firstPlayerCards[i]);
 						if(firstPlayerCards[i] > thirdPlayerCards[0])
 						{
-							int c = i;
 							firstPlayerLabels.get(i).addMouseListener(new MouseAdapter() 
 							{
 								@Override
@@ -425,7 +443,7 @@ public class gui {
 			});
 			
 			
-	
+			
 				//pravq edin spisyk s kartite na vseki igrach ArrayList p1Cards ArrayList p2Cards<String>
 				//Pravq si klas kojto sydyrja vsichki terci ili metod i sravnqvam po imena na snimki naprimer 789 91J i tiq na pika
 				//sa v edin metod i pravq if p1Cards.contains(terca()) i tova vryshta true ili false terca ako e true vika terca i taka
@@ -434,4 +452,20 @@ public class gui {
 				// da se kachi ako ne e koz i nqma spatiq dali moje da caka a ako ne e koz i ima si izbira edna ot vsichkite i taka za 
 				// vsqka boq i za 50 i 100 i tiq raboti predi vsqka igra se puska proverkata za 50 100 kareta i terci
 	}
+		 private void onMouseClicked(MouseEvent e, ArrayList<JLabel> jLabelList, JLabel lbl, ArrayList<String> list) 
+		 {
+			 Player player  =new Player();
+		        for (int i = 0; i < list.size(); i++)
+		        {
+		            if (e.getSource() == jLabelList.get(i)) 
+		            {
+		   
+		            	 System.out.println(list.get(i));
+		                System.out.println("Label" + i + "was clicked");
+		                lbl.setIcon(player.dealCard(list, i));
+		                jLabelList.get(i).setIcon(null);
+		            }
+		        System.out.println(i);
+		        }
+		  }
 }
