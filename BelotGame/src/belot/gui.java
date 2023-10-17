@@ -11,8 +11,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Collections;
+
+import javax.management.loading.PrivateClassLoader;
+import javax.sql.rowset.JoinRowSet;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Choice;
@@ -50,7 +54,7 @@ public class gui {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	
+		private int current = 0;
 		private Deck deck;
 		private void initialize() 
 		{
@@ -62,7 +66,6 @@ public class gui {
 		ArrayList<String> fourthPlayerDeck = new ArrayList<>();
 		ArrayList<JLabel> firstPlayerLabels = new ArrayList<>();
 		ArrayList<JLabel> thirdlayerLabels = new ArrayList<>();
-		
 		
 		Player p1 = new Player();
 		Player p2 = new Player();
@@ -408,25 +411,20 @@ public class gui {
 				public void actionPerformed(ActionEvent e) {
 					int [] thirdPlayerCards = p3.deckInNumbers(thirdPlayerDeck);
 					int [] firstPlayerCards = p1.deckInNumbers(firstPlayerDeck);
+					int current = 0;
+					MyMouseListener m = new MyMouseListener(thirdlayerLabels, p3Cards, thirdPlayerDeck, p3);
 					for(int i = 0; i <= 8; i++)
 					{
 						int c = i;
-							thirdlayerLabels.get(i).addMouseListener(new MouseAdapter() 
-							{
-								
-								@Override
-					            public void mouseClicked(MouseEvent e) 
-								{
-									onMouseClicked(e, thirdlayerLabels, p3Cards, thirdPlayerDeck);
-									//p3Cards.setIcon(p3.dealCard(thirdPlayerDeck, c));
-									//thirdlayerLabels.get(c).setIcon(null);
-					            }
-							});
-						//System.out.println(firstPlayerCards[i]);
-						if(firstPlayerCards[i] > thirdPlayerCards[0])
+						thirdlayerLabels.get(i).addMouseListener(m);
+						current = m.getCurrent();
+					//	System.out.println(m.getCurrent());
+						if(firstPlayerCards[i] > thirdPlayerCards[current])
 						{
+							System.out.println(m.getCurrent());
 							firstPlayerLabels.get(i).addMouseListener(new MouseAdapter() 
 							{
+								
 								@Override
 					            public void mouseClicked(MouseEvent e) 
 								{
@@ -452,6 +450,85 @@ public class gui {
 				// da se kachi ako ne e koz i nqma spatiq dali moje da caka a ako ne e koz i ima si izbira edna ot vsichkite i taka za 
 				// vsqka boq i za 50 i 100 i tiq raboti predi vsqka igra se puska proverkata za 50 100 kareta i terci
 	}
+		
+		 
+	private static class MyMouseListener implements MouseListener
+	{
+		private ArrayList<JLabel> jlabeList;
+		private JLabel lbl;
+		private ArrayList<String> list;
+		private Player p;
+		private int current;
+		public MyMouseListener(ArrayList<JLabel> jlabeList, JLabel lbl, ArrayList<String> list, Player p) {
+			super();
+			this.jlabeList = jlabeList;
+			this.lbl = lbl;
+			this.list = list;
+			this.p = p;
+		}
+
+		public ArrayList<JLabel> getJlabeList() {
+			return jlabeList;
+		}
+
+		public void setJlabeList(ArrayList<JLabel> jlabeList) {
+			this.jlabeList = jlabeList;
+		}
+
+		public JLabel getLbl() {
+			return lbl;
+		}
+
+		public void setLbl(JLabel lbl) {
+			this.lbl = lbl;
+		}
+
+		public ArrayList<String> getList() {
+			return list;
+		}
+
+		public void setList(ArrayList<String> list) {
+			this.list = list;
+		}
+
+		public int getCurrent() {
+			return current;
+		}
+
+		public void setCurrent(int current) {
+			this.current = current;
+		}
+
+		@Override
+		public void mouseClicked(MouseEvent e) 
+		{
+			onMouseClicked(e, jlabeList, lbl, list);
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
 		 private void onMouseClicked(MouseEvent e, ArrayList<JLabel> jLabelList, JLabel lbl, ArrayList<String> list) 
 		 {
 			 Player player  =new Player();
@@ -459,13 +536,12 @@ public class gui {
 		        {
 		            if (e.getSource() == jLabelList.get(i)) 
 		            {
-		   
-		            	 System.out.println(list.get(i));
-		                System.out.println("Label" + i + "was clicked");
+		            	setCurrent(i);
 		                lbl.setIcon(player.dealCard(list, i));
 		                jLabelList.get(i).setIcon(null);
 		            }
-		        System.out.println(i);
 		        }
 		  }
+		
+	}
 }
