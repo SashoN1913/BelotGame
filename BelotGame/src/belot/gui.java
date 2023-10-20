@@ -487,42 +487,146 @@ public class gui {
 									System.out.println(firstPlayerCards[i]);
 									if (firstPlayerCards[i] >= 9 && firstPlayerCards[i] <= 16) {
 										switch (firstPlayerCards[i]) {
-										case 1: {
+										case 9: {
 											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
 											break;
 										}
 
-										case 2: {
+										case 10: {
 											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
 											break;
 										}
 
-										case 3: {
+										case 11: {
 											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
 											break;
 										}
 
-										case 4: {
+										case 12: {
 											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
 											break;
 										}
 
-										case 5: {
+										case 13: {
 											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
 											break;
 										}
 
-										case 6: {
+										case 14: {
 											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
 											break;
 										}
 
-										case 7: {
+										case 15: {
 											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
 											break;
 										}
 
-										case 8: {
+										case 16: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+										default:
+											throw new IllegalArgumentException("Unexpected value: " + firstPlayerCards);
+										}
+									} else {
+										continue;
+									}
+
+								}
+								
+								if (thirdPlayerCards[current] >= 17 && thirdPlayerCards[current] <= 24) {
+									System.out.println(firstPlayerCards[i]);
+									if (firstPlayerCards[i] >= 17 && firstPlayerCards[i] <= 24) {
+										switch (firstPlayerCards[i]) {
+										case 17: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 18: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 19: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 20: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 21: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 22: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 23: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 24: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+										default:
+											throw new IllegalArgumentException("Unexpected value: " + firstPlayerCards);
+										}
+									} else {
+										continue;
+									}
+
+								}
+								
+								if (thirdPlayerCards[current] >= 25 && thirdPlayerCards[current] <= 32) {
+									System.out.println(firstPlayerCards[i]);
+									if (firstPlayerCards[i] >= 25 && firstPlayerCards[i] <= 32) {
+										switch (firstPlayerCards[i]) {
+										case 25: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 26: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 27: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 28: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 29: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 30: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 31: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 32: {
 											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
 											break;
 										}
