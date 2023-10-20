@@ -478,12 +478,13 @@ public class gui {
 											throw new IllegalArgumentException("Unexpected value: " + firstPlayerCards);
 										}
 									} else {
+										throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
 										continue;
 									}
 
 								}
 
-								if (thirdPlayerCards[current] >= 9 && thirdPlayerCards[current] <= 16) {
+								else if (thirdPlayerCards[current] >= 9 && thirdPlayerCards[current] <= 16) {
 									System.out.println(firstPlayerCards[i]);
 									if (firstPlayerCards[i] >= 9 && firstPlayerCards[i] <= 16) {
 										switch (firstPlayerCards[i]) {
@@ -530,12 +531,13 @@ public class gui {
 											throw new IllegalArgumentException("Unexpected value: " + firstPlayerCards);
 										}
 									} else {
+										throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
 										continue;
 									}
 
 								}
-								
-								if (thirdPlayerCards[current] >= 17 && thirdPlayerCards[current] <= 24) {
+
+								else if (thirdPlayerCards[current] >= 17 && thirdPlayerCards[current] <= 24) {
 									System.out.println(firstPlayerCards[i]);
 									if (firstPlayerCards[i] >= 17 && firstPlayerCards[i] <= 24) {
 										switch (firstPlayerCards[i]) {
@@ -582,12 +584,13 @@ public class gui {
 											throw new IllegalArgumentException("Unexpected value: " + firstPlayerCards);
 										}
 									} else {
+										throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
 										continue;
 									}
 
 								}
-								
-								if (thirdPlayerCards[current] >= 25 && thirdPlayerCards[current] <= 32) {
+
+								else if (thirdPlayerCards[current] >= 25 && thirdPlayerCards[current] <= 32) {
 									System.out.println(firstPlayerCards[i]);
 									if (firstPlayerCards[i] >= 25 && firstPlayerCards[i] <= 32) {
 										switch (firstPlayerCards[i]) {
@@ -634,10 +637,15 @@ public class gui {
 											throw new IllegalArgumentException("Unexpected value: " + firstPlayerCards);
 										}
 									} else {
+										throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
 										continue;
 									}
 
 								}
+								else {
+									throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+								}
+
 							}
 							/*
 							 * if (firstPlayerCards[c] > thirdPlayerCards[current]) {
