@@ -319,7 +319,6 @@ public class gui {
 				frame.getContentPane().add(btnComplete);
 				if(e.getSource() == choice)
 				{
-					//frame.getContentPane().add(btnComplete);
 					btnComplete.addActionListener(new ActionListener() {
 
 						@Override
@@ -371,15 +370,6 @@ public class gui {
 				
 			}});
 	
-		/*
-		 * p3FirsCard.addMouseListener(new MouseAdapter() {
-		 * 
-		 * @Override public void mouseClicked(MouseEvent e) {
-		 * System.out.println(thirdPlayerDeck.get(0));
-		 * p3Cards.setIcon(p1.dealCard(thirdPlayerDeck, 0)); p3FirsCard.setIcon(null);
-		 * 
-		 * } });
-		 */
 			firstPlayerLabels.add(p1FirsCard);
 			firstPlayerLabels.add(p1SecondCard);
 			firstPlayerLabels.add(p1ThirdCard);
@@ -411,31 +401,87 @@ public class gui {
 				public void actionPerformed(ActionEvent e) {
 					int [] thirdPlayerCards = p3.deckInNumbers(thirdPlayerDeck);
 					int [] firstPlayerCards = p1.deckInNumbers(firstPlayerDeck);
-					int current = 0;
-					MyMouseListener m = new MyMouseListener(thirdlayerLabels, p3Cards, thirdPlayerDeck, p3);
-					for(int i = 0; i <= 8; i++)
+					MyMouseListener m = new MyMouseListener(thirdlayerLabels, firstPlayerLabels ,p3Cards, p1Cards ,thirdPlayerDeck, firstPlayerDeck);
+					
+					for(int i = 0; i < 8; i++)
 					{
-						int c = i;
 						thirdlayerLabels.get(i).addMouseListener(m);
-						current = m.getCurrent();
-					//	System.out.println(m.getCurrent());
-						if(firstPlayerCards[i] > thirdPlayerCards[current])
-						{
-							System.out.println(m.getCurrent());
-							firstPlayerLabels.get(i).addMouseListener(new MouseAdapter() 
-							{
-								
-								@Override
-					            public void mouseClicked(MouseEvent e) 
-								{
-									p1Cards.setIcon(p1.dealCard(firstPlayerDeck, c));
-									firstPlayerLabels.get(c).setIcon(null);
-					            }
-							});
-							
-						}
 					}
 					
+					for(int i = 0; i < 8; i++)
+					{
+						int c = i;
+						thirdlayerLabels.get(i).addMouseListener(new MouseListener() {
+							
+							@Override
+							public void mouseReleased(MouseEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+							
+							@Override
+							public void mousePressed(MouseEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+							
+							@Override
+							public void mouseExited(MouseEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+							
+							@Override
+							public void mouseEntered(MouseEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+							
+							@Override
+							public void mouseClicked(MouseEvent e) {
+								int current = 0;
+								if(e.getSource() == thirdlayerLabels.get(c))
+								{
+									current = m.getCurrent();
+									System.out.println("Vlezna");
+									System.out.println(m.getCurrent());
+								}
+								System.out.println(thirdPlayerCards[current]);
+								if(current >= 1 && current <=8)
+								{
+									if(firstPlayerCards[c] >= 1 && firstPlayerCards[c] <= 8)
+									{
+										switch (firstPlayerCards[c]) {
+										case 1: 
+										{
+											 firstPlayerLabels.get(c).addMouseListener(new MouseAdapter() {
+												  
+												  @Override public void mouseClicked(MouseEvent e) {
+												  p1Cards.setIcon(p1.dealCard(firstPlayerDeck, c));
+												  firstPlayerLabels.get(c).setIcon(null); } });	
+										}
+										
+										case 2: 
+										{
+											 firstPlayerLabels.get(c).addMouseListener(new MouseAdapter() {
+												  
+												  @Override public void mouseClicked(MouseEvent e) {
+												  p1Cards.setIcon(p1.dealCard(firstPlayerDeck, c));
+												  firstPlayerLabels.get(c).setIcon(null); } });	
+										}
+										
+										
+										default:
+											throw new IllegalArgumentException("Unexpected value: " + firstPlayerCards);
+										}
+									}
+								}
+								if(firstPlayerCards[c] > thirdPlayerCards[current]) {
+									throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards);
+								}
+							}
+						});
+					}
 				}
 				
 			});
@@ -451,45 +497,52 @@ public class gui {
 				// vsqka boq i za 50 i 100 i tiq raboti predi vsqka igra se puska proverkata za 50 100 kareta i terci
 	}
 		
-		 
+	public void throwCard(ArrayList<JLabel> labelList, ArrayList<String> deck ,JLabel lbl)
+	{
+		Player player = new Player();
+		for(int i = 0; i < 8; i++)
+		{
+			int c = i;
+			labelList.get(c).addMouseListener(new MouseAdapter() {
+			  
+			  @Override public void mouseClicked(MouseEvent e) {
+			  lbl.setIcon(player.dealCard(deck, c));
+			  labelList.get(c).setIcon(null); } });
+		}
+	}
+		
 	private static class MyMouseListener implements MouseListener
 	{
 		private ArrayList<JLabel> jlabeList;
 		private JLabel lbl;
+		private JLabel lbl2;
 		private ArrayList<String> list;
+		private ArrayList<String> list2;
 		private Player p;
 		private int current;
-		public MyMouseListener(ArrayList<JLabel> jlabeList, JLabel lbl, ArrayList<String> list, Player p) {
+		private ArrayList<JLabel> secondLbList;
+		public MyMouseListener(ArrayList<JLabel> jlabeList, JLabel lbl, ArrayList<String> list, Player p, ArrayList<JLabel> secondLblList) {
 			super();
 			this.jlabeList = jlabeList;
 			this.lbl = lbl;
 			this.list = list;
 			this.p = p;
+			this.secondLbList = secondLblList;
 		}
-
-		public ArrayList<JLabel> getJlabeList() {
-			return jlabeList;
-		}
-
-		public void setJlabeList(ArrayList<JLabel> jlabeList) {
+		
+		
+		
+		public MyMouseListener(ArrayList<JLabel> jlabeList, ArrayList<JLabel> secondLbList ,JLabel lbl, JLabel lbl2, ArrayList<String> list,
+				ArrayList<String> list2) {
+			super();
 			this.jlabeList = jlabeList;
-		}
-
-		public JLabel getLbl() {
-			return lbl;
-		}
-
-		public void setLbl(JLabel lbl) {
 			this.lbl = lbl;
-		}
-
-		public ArrayList<String> getList() {
-			return list;
-		}
-
-		public void setList(ArrayList<String> list) {
+			this.lbl2 = lbl2;
 			this.list = list;
+			this.list2 = list2;
+			this.secondLbList = secondLbList;
 		}
+
 
 		public int getCurrent() {
 			return current;
@@ -502,7 +555,7 @@ public class gui {
 		@Override
 		public void mouseClicked(MouseEvent e) 
 		{
-			onMouseClicked(e, jlabeList, lbl, list);
+			onMouseClicked(e, jlabeList, secondLbList,lbl, lbl2,list, list2);
 		}
 
 		@Override
@@ -529,19 +582,25 @@ public class gui {
 			
 		}
 
-		 private void onMouseClicked(MouseEvent e, ArrayList<JLabel> jLabelList, JLabel lbl, ArrayList<String> list) 
+		 private void onMouseClicked(MouseEvent e, ArrayList<JLabel> jLabelList, ArrayList<JLabel> secondLblList , JLabel lbl, JLabel lbl2 ,ArrayList<String> list, ArrayList<String> list2 ) 
 		 {
-			 Player player  =new Player();
+			 Player player = new Player();
+			 int c = 0;
 		        for (int i = 0; i < list.size(); i++)
 		        {
 		            if (e.getSource() == jLabelList.get(i)) 
 		            {
-		            	setCurrent(i);
-		                lbl.setIcon(player.dealCard(list, i));
-		                jLabelList.get(i).setIcon(null);
+		               setCurrent(i);
+		               lbl.setIcon(player.dealCard(list, i));
+		               lbl.setDisabledIcon(player.dealCard(list, i));
+		               jLabelList.get(i).setIcon(null);
+		               System.out.println(getCurrent());
+		               break;
 		            }
-		        }
+		        
+		         }
+		      }
 		  }
 		
 	}
-}
+
