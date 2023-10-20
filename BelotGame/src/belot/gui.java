@@ -429,7 +429,7 @@ public class gui {
 							if (e.getSource() == thirdlayerLabels.get(c)) {
 								current = m.getCurrent();
 							}
-	
+
 							for (int i = 0; i < 8; i++) {
 								if (thirdPlayerCards[current] >= 1 && thirdPlayerCards[current] <= 8) {
 									System.out.println(firstPlayerCards[i]);
@@ -480,6 +480,59 @@ public class gui {
 									} else {
 										continue;
 									}
+
+								}
+
+								if (thirdPlayerCards[current] >= 9 && thirdPlayerCards[current] <= 16) {
+									System.out.println(firstPlayerCards[i]);
+									if (firstPlayerCards[i] >= 9 && firstPlayerCards[i] <= 16) {
+										switch (firstPlayerCards[i]) {
+										case 1: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 2: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 3: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 4: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 5: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 6: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 7: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+
+										case 8: {
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+										default:
+											throw new IllegalArgumentException("Unexpected value: " + firstPlayerCards);
+										}
+									} else {
+										continue;
+									}
+
 								}
 							}
 							/*
