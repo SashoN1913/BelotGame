@@ -432,7 +432,7 @@ public class gui {
 
 							for (int i = 0; i < 8; i++) {
 								if (thirdPlayerCards[current] >= 1 && thirdPlayerCards[current] <= 8) {
-									System.out.println(firstPlayerCards[i]);
+									System.out.println(p1Cards);
 									if (firstPlayerCards[i] >= 1 && firstPlayerCards[i] <= 8) {
 										switch (firstPlayerCards[i]) {
 										case 1: {
@@ -477,15 +477,16 @@ public class gui {
 										default:
 											throw new IllegalArgumentException("Unexpected value: " + firstPlayerCards);
 										}
-									} else {
-										throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
-										continue;
-									}
+										if(p1Cards.getIcon().equals(null))
+										{
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+									} 
 
 								}
 
 								else if (thirdPlayerCards[current] >= 9 && thirdPlayerCards[current] <= 16) {
-									System.out.println(firstPlayerCards[i]);
 									if (firstPlayerCards[i] >= 9 && firstPlayerCards[i] <= 16) {
 										switch (firstPlayerCards[i]) {
 										case 9: {
@@ -530,13 +531,15 @@ public class gui {
 										default:
 											throw new IllegalArgumentException("Unexpected value: " + firstPlayerCards);
 										}
-									} else {
-										throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
-										continue;
-									}
+										if(p1Cards.getIcon().equals(null))
+										{
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+									} 
 
 								}
-
+								
 								else if (thirdPlayerCards[current] >= 17 && thirdPlayerCards[current] <= 24) {
 									System.out.println(firstPlayerCards[i]);
 									if (firstPlayerCards[i] >= 17 && firstPlayerCards[i] <= 24) {
@@ -583,13 +586,16 @@ public class gui {
 										default:
 											throw new IllegalArgumentException("Unexpected value: " + firstPlayerCards);
 										}
-									} else {
-										throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
-										continue;
-									}
+										
+										if(p1Cards.getIcon().equals(null))
+										{
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+									} 
 
 								}
-
+								
 								else if (thirdPlayerCards[current] >= 25 && thirdPlayerCards[current] <= 32) {
 									System.out.println(firstPlayerCards[i]);
 									if (firstPlayerCards[i] >= 25 && firstPlayerCards[i] <= 32) {
@@ -629,23 +635,26 @@ public class gui {
 											break;
 										}
 
-										case 32: {
+										case 36: {
 											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
 											break;
 										}
 										default:
 											throw new IllegalArgumentException("Unexpected value: " + firstPlayerCards);
 										}
-									} else {
-										throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
-										continue;
-									}
-
+										if(p1Cards.getIcon().equals(null))
+										{
+											throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+											break;
+										}
+									} 
+									
 								}
 								else {
 									throwCard(firstPlayerLabels, firstPlayerDeck, p1Cards, i);
+									break;
 								}
-
+								
 							}
 							/*
 							 * if (firstPlayerCards[c] > thirdPlayerCards[current]) {
